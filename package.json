@@ -11,7 +11,7 @@
     "@antv/data-set": "^0.8.9",
     "@antv/g2": "~3.2.4",
     "@antv/g6": "~2.0.0",
-    "antd": "~3.6.1",
+    "antd": "^3.13.4",
     "axios": "^0.18.0",
     "babel-plugin-import": "^1.8.0",
     "dva": "^2.4.0",
@@ -35,5 +35,4 @@
     "roadhog": "^2.0.0",
     "roadhog-api-doc": "^1.1.2"
   }
-
 }
