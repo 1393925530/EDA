@@ -70,7 +70,7 @@ class  DesignAndDevelopInputForm  extends Component {
     let info={...userInfo,endDate,compactDate,receiptDate,auditDate,examineDate,approveDate}
     localStorage.setItem('input',JSON.stringify(info))
   };
-
+//
   componentDidMount() {
     let input=JSON.parse(localStorage.getItem('input'))
     // const paramList=["DTMS_0033","TB_PCB_TECHNOLOGY","DTMS_0018","DTMS_1122","DTMS_1127","DTMS_1131","DTMS_1133","DTMS_1157"]
