@@ -1,0 +1,12 @@
+{
+  "designCode": "es100",
+  "schematicFlag": "1",
+  "impedanceFlag": "1",
+  "coldplateFlag": "1",
+  "noLayoutFlag": "1",
+  "hignLimitFlag": "1",
+  "holeRequestFlag": "1",
+  "locationFlag": "1",
+  "priorityLevel": "1",
+  "simulation": "1"
+}
