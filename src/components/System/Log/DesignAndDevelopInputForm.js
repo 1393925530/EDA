@@ -70,7 +70,7 @@ class  DesignAndDevelopInputForm  extends Component {
     let info={...userInfo,endDate,compactDate,receiptDate,auditDate,examineDate,approveDate}
     localStorage.setItem('input',JSON.stringify(info))
   };
-//
+
   componentDidMount() {
     let input=JSON.parse(localStorage.getItem('input'))
     // TEST
