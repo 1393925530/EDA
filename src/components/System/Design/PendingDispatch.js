@@ -82,8 +82,10 @@ class PendingDispatch extends Component {
                   <FormItem label="服务地区" {...formItemLayout}>
                     {getFieldDecorator('contactCode')(
                       <Select placeholder="请选择" style={{ width: '100%' }}>
-                      <Option value=""></Option>
-                      <Option value=""></Option>
+                      <Option value="无锡">无锡</Option>
+                      <Option value="西安">西安</Option>
+                      <Option value="北京">北京</Option>
+                      <Option value="上海">上海</Option>
                     </Select>
                     )}
                   </FormItem>
