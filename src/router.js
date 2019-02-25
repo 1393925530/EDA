@@ -5,6 +5,7 @@ import { Router, Route, Switch } from 'dva/router';
 import RoleManager from './routes/System/Role';
 import UserManager from './routes/System/User';
 import LogManager from './routes/System/Log';
+import OnlineDesign from './routes/System/Design';
 import ParamSetting from './routes/System/Param';
 function RouterConfig({ history }) {
   return (
@@ -17,6 +18,7 @@ function RouterConfig({ history }) {
         <Route path="/sys/user-manager" exact component={UserManager} />
         <Route path="/sys/log-manager" exact component={LogManager} />
         <Route path="/sys/param-setting" exact component={ParamSetting} />
+        <Route path="/sys/online-design" exact component={OnlineDesign} />
       </Switch>
     </Router>
   );
