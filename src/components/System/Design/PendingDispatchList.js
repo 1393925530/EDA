@@ -106,7 +106,7 @@ export default class PendingDispatchList extends Component {
 
 
 
-        return (<Fragment style={{width: 100}}>
+        return (<Fragment>
             <Card bordered={false}>
                 <Table columns={columns} loading={fetchLoading} dataSource={roles} pagination={false} />
             </Card>

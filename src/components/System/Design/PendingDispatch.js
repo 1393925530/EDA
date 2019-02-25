@@ -11,6 +11,7 @@ class PendingDispatch extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            placeList: ['无锡', '西安', '上海', '北京'],
         };
     }
     render() {
@@ -82,10 +83,9 @@ class PendingDispatch extends Component {
                   <FormItem label="服务地区" {...formItemLayout}>
                     {getFieldDecorator('contactCode')(
                       <Select placeholder="请选择" style={{ width: '100%' }}>
-                      <Option value="无锡">无锡</Option>
-                      <Option value="西安">西安</Option>
-                      <Option value="北京">北京</Option>
-                      <Option value="上海">上海</Option>
+                      {this.state.placeList.map((value,index)=>{
+                      return (<Option value={value} key={index}>{value}</Option>)
+                    })}
                     </Select>
                     )}
                   </FormItem>
