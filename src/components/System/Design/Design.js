@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react';
 import { Card, message, Button, Form, Row, Col, Input, DatePicker, Tabs, Select, Radio, Checkbox } from 'antd';
 // import styles from './Log.less';
 // import DesignAndDevelopInputForm from './DesignAndDevelopInputForm';
-// import PcbForm from './PcbForm';
+import PendingDispatch from './PendingDispatch';
 // import DesignAndDevelopPlanForm from './DesignAndDevelopPlanForm';
 //
 @Form.create()
@@ -35,13 +35,11 @@ export default class OnlineDesign extends Component {
 
         return (
           <Tabs defaultActiveKey="1" >
-            <TabPane tab="待调度" key="1" >
-              2333
+            <TabPane tab="待评估" key="1" >
               {/* <DesignAndDevelopInputForm/> */}
             </TabPane>
-            <TabPane tab="待评估" key="2">
-               23333
-              {/* <PcbForm/> */}
+            <TabPane tab="待调度" key="2">
+             <PendingDispatch/>
             </TabPane>
             <TabPane tab="已调度" key="3">
               23333
