@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import { Card, Divider, Table, Button, Modal } from 'antd';
 import { connect } from 'dva';
+import axios from 'axios';
 // import AddForm from './AddForm';
 // import EditForm from './EditForm';
 // import SetForm from './SetForm';
@@ -16,6 +17,7 @@ export default class PendingDispatchList extends Component {
         addVisible: false,
         searchKeyword: {},
         currentRecord: {},
+        list: {}
     }
 
     // 初始化数据
@@ -24,6 +26,18 @@ export default class PendingDispatchList extends Component {
         dispatch({
             type: 'role/fetch',
         });
+        axios.post('/api/test', {
+            headers: {
+                'Content-Type': 'application/json;charset=utf-8'
+            }
+        })
+        .then((res) => {
+            this.setState(() => ({
+                list: res.data
+            }))
+            console.log(this.state.list);
+        })
+        .catch(() => {alert('error')})
     }
 
     // 添加对话框begin
