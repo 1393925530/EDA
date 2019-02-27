@@ -17,27 +17,27 @@ export default class PendingDispatchList extends Component {
         addVisible: false,
         searchKeyword: {},
         currentRecord: {},
-        list: {}
-    }
+        data: [],
+        pagination: {},
+        loading: false,
+    };
 
     // 初始化数据
     componentDidMount() {
-        const { dispatch } = this.props;
-        dispatch({
-            type: 'role/fetch',
-        });
+        // const { dispatch } = this.props;
+        // dispatch({
+        //     type: 'role/fetch',
+        // });
         axios.post('/api/test', {
             headers: {
                 'Content-Type': 'application/json;charset=utf-8'
             }
-        })
-        .then((res) => {
-            this.setState(() => ({
-                list: res.data
-            }))
-            console.log(this.state.list);
-        })
-        .catch(() => {alert('error')})
+        }).then((res) => {
+            this.setState({
+                data: res.data.rows
+            });
+        }).catch(() => {alert('error')})
+        console.log(this.state.data);
     }
 
     // 添加对话框begin
@@ -120,7 +120,7 @@ export default class PendingDispatchList extends Component {
 
         return (<Fragment>
             <Card bordered={false}>
-                <Table columns={columns} loading={fetchLoading} dataSource={roles} pagination={false} keyWord={this.props.searchkeyword}/>
+                <Table columns={columns} loading={fetchLoading} dataSource={this.state.data} pagination={false} keyWord={this.props.searchkeyword}/>
             </Card>
 
             <Modal
