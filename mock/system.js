@@ -2,17 +2,21 @@ import { parse } from 'url';
 
 // 角色、权限相关
 let roleDataSource = [
-    { key: '1', name: '设计工程师', status: '启用', group: '设计人员', note: '', rights: [] },
-    { key: '2', name: '项目负责人', status: '启用', group: '项目管理人员', note: '', rights: [] },
-    { key: '3', name: '调度员', status: '启用', group: '项目管理人员', note: '', rights: [] },
-    { key: '4', name: '客服人员', status: '启用', group: '订单管理员', note: '', rights: [] },
-    { key: '5', name: '质检师', status: '启用', group: '质量管理员', note: '', rights: [] },
-    { key: '6', name: '质量专员', status: '启用', group: '质量管理员', note: '', rights: [] },
-    { key: '7', name: '系统管理员', status: '启用', group: '系统管理员', note: '', rights: [] },
-    { key: '8', name: '重点客户单位接口人', status: '启用', group: '管理人员', note: '', rights: [] },
-    { key: '9', name: '小组主管', status: '启用', group: '管理人员', note: '', rights: [] },
-    { key: '10', name: '部门经理', status: '启用', group: '管理人员', note: '', rights: [] },
-    { key: '11', name: '高级经理', status: '启用', group: '管理人员', note: '', rights: [] },
+    { key: '1', designOrder: 'KCAD190225001', fileName: 'wjm001', customBbr: '14所三部', customContact: '侯天赐', sale: '王海超', PCBSoftware: 'CAD', designType: '新设计', requestFinishDate: '2019-02-25', assess: '王海超', nowProgress: '90%', area: '西安'},
+    { key: '2', designOrder: 'KCAD190225001', fileName: 'wjm001', customBbr: '14所三部', customContact: '侯天赐', sale: '王海超', PCBSoftware: 'CAD', designType: '新设计', requestFinishDate: '2019-02-25', assess: '王海超', nowProgress: '90%', area: '西安'},
+    { key: '3', designOrder: 'KCAD190225001', fileName: 'wjm001', customBbr: '14所三部', customContact: '侯天赐', sale: '王海超', PCBSoftware: 'CAD', designType: '新设计', requestFinishDate: '2019-02-25', assess: '王海超', nowProgress: '90%', area: '西安'},
+    { key: '4', designOrder: 'KCAD190225001', fileName: 'wjm001', customBbr: '14所三部', customContact: '侯天赐', sale: '王海超', PCBSoftware: 'CAD', designType: '新设计', requestFinishDate: '2019-02-25', assess: '王海超', nowProgress: '90%', area: '西安'},
+    { key: '5', designOrder: 'KCAD190225001', fileName: 'wjm001', customBbr: '14所三部', customContact: '侯天赐', sale: '王海超', PCBSoftware: 'CAD', designType: '新设计', requestFinishDate: '2019-02-25', assess: '王海超', nowProgress: '90%', area: '西安'},
+    { key: '6', designOrder: 'KCAD190225001', fileName: 'wjm001', customBbr: '14所三部', customContact: '侯天赐', sale: '王海超', PCBSoftware: 'CAD', designType: '新设计', requestFinishDate: '2019-02-25', assess: '王海超', nowProgress: '90%', area: '西安'},
+    { key: '7', designOrder: 'KCAD190225001', fileName: 'wjm001', customBbr: '14所三部', customContact: '侯天赐', sale: '王海超', PCBSoftware: 'CAD', designType: '新设计', requestFinishDate: '2019-02-25', assess: '王海超', nowProgress: '90%', area: '西安'},
+    { key: '8', designOrder: 'KCAD190225001', fileName: 'wjm001', customBbr: '14所三部', customContact: '侯天赐', sale: '王海超', PCBSoftware: 'CAD', designType: '新设计', requestFinishDate: '2019-02-25', assess: '王海超', nowProgress: '90%', area: '西安'},
+    { key: '9', designOrder: 'KCAD190225001', fileName: 'wjm001', customBbr: '14所三部', customContact: '侯天赐', sale: '王海超', PCBSoftware: 'CAD', designType: '新设计', requestFinishDate: '2019-02-25', assess: '王海超', nowProgress: '90%', area: '西安'},
+    { key: '10', designOrder: 'KCAD190225001', fileName: 'wjm001', customBbr: '14所三部', customContact: '侯天赐', sale: '王海超', PCBSoftware: 'CAD', designType: '新设计', requestFinishDate: '2019-02-25', assess: '王海超', nowProgress: '90%', area: '西安'},
+    { key: '11', designOrder: 'KCAD190225001', fileName: 'wjm001', customBbr: '14所三部', customContact: '侯天赐', sale: '王海超', PCBSoftware: 'CAD', designType: '新设计', requestFinishDate: '2019-02-25', assess: '王海超', nowProgress: '90%', area: '西安'},
+    { key: '12', designOrder: 'KCAD190225001', fileName: 'wjm001', customBbr: '14所三部', customContact: '侯天赐', sale: '王海超', PCBSoftware: 'CAD', designType: '新设计', requestFinishDate: '2019-02-25', assess: '王海超', nowProgress: '90%', area: '西安'},
+    { key: '13', designOrder: 'KCAD190225001', fileName: 'wjm001', customBbr: '14所三部', customContact: '侯天赐', sale: '王海超', PCBSoftware: 'CAD', designType: '新设计', requestFinishDate: '2019-02-25', assess: '王海超', nowProgress: '90%', area: '西安'},
+    { key: '14', designOrder: 'KCAD190225001', fileName: 'wjm001', customBbr: '14所三部', customContact: '侯天赐', sale: '王海超', PCBSoftware: 'CAD', designType: '新设计', requestFinishDate: '2019-02-25', assess: '王海超', nowProgress: '90%', area: '西安'},
+    { key: '15', designOrder: 'KCAD190225001', fileName: 'wjm001', customBbr: '14所三部', customContact: '侯天赐', sale: '王海超', PCBSoftware: 'CAD', designType: '新设计', requestFinishDate: '2019-02-25', assess: '王海超', nowProgress: '90%', area: '西安'},
 ];
 
 export function getRoles(req, res, u, b) {

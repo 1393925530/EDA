@@ -51,6 +51,9 @@ export default class BasicLayout extends React.Component {
               <Menu.Item key="6">
                 <Link to="/sys/role-manager"><span>角色配置</span></Link>
               </Menu.Item>
+              <Menu.Item key="7">
+                <Link to="/sys/online-design"><span>在线设计单</span></Link>
+              </Menu.Item>
             </SubMenu>
           </Menu>
         </Sider>
