@@ -8,15 +8,13 @@ import { connect } from 'dva';
 @connect(({ role, loading }) => ({
     role,
     fetchLoading: loading.effects['role/fetch'],
-    addLoading: loading.effects['role/add'],
-    editLoading: loading.effects['role/edit'],
+    // addLoading: loading.effects['role/add'],
+    // editLoading: loading.effects['role/edit'],
 }))
 export default class PendingDispatchList extends Component {
     state = {
         addVisible: false,
-        editVisible: false,
-        setVisible: false,
-        setLoading: false,
+        searchKeyword: {},
         currentRecord: {},
     }
 
@@ -108,7 +106,7 @@ export default class PendingDispatchList extends Component {
 
         return (<Fragment>
             <Card bordered={false}>
-                <Table columns={columns} loading={fetchLoading} dataSource={roles} pagination={false} />
+                <Table columns={columns} loading={fetchLoading} dataSource={roles} pagination={false} keyWord={this.props.searchkeyword}/>
             </Card>
 
             <Modal
