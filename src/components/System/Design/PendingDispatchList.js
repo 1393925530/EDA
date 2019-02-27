@@ -12,32 +12,36 @@ import axios from 'axios';
     // addLoading: loading.effects['role/add'],
     // editLoading: loading.effects['role/edit'],
 }))
-export default class PendingDispatchList extends Component {
-    state = {
+class PendingDispatchList extends Component {
+
+    constructor(props) {
+      super(props);
+      this.state = {
         addVisible: false,
         searchKeyword: {},
         currentRecord: {},
         data: [],
         pagination: {},
         loading: false,
-    };
+      };
+    }
 
     // 初始化数据
     componentDidMount() {
-        // const { dispatch } = this.props;
-        // dispatch({
-        //     type: 'role/fetch',
-        // });
-        axios.post('/api/test', {
-            headers: {
-                'Content-Type': 'application/json;charset=utf-8'
-            }
-        }).then((res) => {
+        const { dispatch } = this.props;
+        dispatch({
+            type: 'role/fetch',
+        });
+        axios.post('/api/test')
+        .then((res) => {
+            let list = res.data;
+            console.log(typeof(list));
             this.setState({
-                data: res.data.rows
+                data: list
             });
-        }).catch(() => {alert('error')})
-        console.log(this.state.data);
+            console.log(res);
+        })
+        .catch(() => {alert('error')})
     }
 
     // 添加对话框begin
@@ -71,6 +75,7 @@ export default class PendingDispatchList extends Component {
     }
 
     render() {
+        console.log(this.state.data);
         const { fetchLoading, addLoading, editLoading, role } = this.props;
         const { addVisible, editVisible, setLoading, setVisible, currentRecord } = this.state;
         const { roles } = role;
@@ -120,7 +125,7 @@ export default class PendingDispatchList extends Component {
 
         return (<Fragment>
             <Card bordered={false}>
-                <Table columns={columns} loading={fetchLoading} dataSource={this.state.data} pagination={false} keyWord={this.props.searchkeyword}/>
+                <Table columns={columns} loading={fetchLoading} dataSource={roles} pagination={false} keyWord={this.props.searchkeyword}/>
             </Card>
 
             <Modal
@@ -141,3 +146,4 @@ export default class PendingDispatchList extends Component {
     }
 }
 
+export default PendingDispatchList;
