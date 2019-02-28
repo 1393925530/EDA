@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react';
 import { Card, Divider, Table, Button, Modal } from 'antd';
 import { connect } from 'dva';
 import axios from 'axios';
-// import AddForm from './AddForm';
+import DispatchLeader from './DispatchLeader';
 // import EditForm from './EditForm';
 // import SetForm from './SetForm';
 
@@ -139,7 +139,7 @@ class PendingDispatchList extends Component {
                 <Table columns={columns} loading={fetchLoading} dataSource={this.state.data} pagination={false}/>
             </Card>
 
-            <Modal
+            <Modal width = {'600px'}
                 visible={addVisible}
                 title="负责人调度"
                 onOk={this.handleAddOk}
@@ -149,7 +149,7 @@ class PendingDispatchList extends Component {
                     <Button key="back" type="">布局调度</Button>,
                 ]}
             >
-                {/* <AddForm ref={this.addFormRef}></AddForm> */}
+                <DispatchLeader ref={this.addFormRef}></DispatchLeader>
             </Modal>
         </Fragment>);
     }
