@@ -128,7 +128,7 @@ class PendingDispatch extends Component {
         this.props.form.setFields({"customContact":""})
         this.props.form.setFields({"sale":""})
         this.props.form.setFields({"area":""})
-        this.setState(() => {
+        this.setState({
           searchKeyword: {}
         })
       }

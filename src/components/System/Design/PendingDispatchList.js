@@ -141,14 +141,12 @@ class PendingDispatchList extends Component {
 
             <Modal
                 visible={addVisible}
-                title="添加角色"
+                title="负责人调度"
                 onOk={this.handleAddOk}
                 onCancel={this.handleAddCancel}
                 footer={[
-                    <Button key="back" type="danger">取消</Button>,
-                    <Button key="submit" type="primary" loading={addLoading}>
-                        提交
-            </Button>,
+                    <Button key="submit" type="" loading={addLoading}>负责人调度完成</Button>,
+                    <Button key="back" type="">布局调度</Button>,
                 ]}
             >
                 {/* <AddForm ref={this.addFormRef}></AddForm> */}
