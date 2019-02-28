@@ -122,6 +122,12 @@ class PendingDispatch extends Component {
       }
 
       handlePendingDispatchReset = (e) => {
+        this.props.form.setFields({"designCode":""})
+        this.props.form.setFields({"fileName":""})
+        this.props.form.setFields({"customBbr":""})
+        this.props.form.setFields({"customContact":""})
+        this.props.form.setFields({"sale":""})
+        this.props.form.setFields({"area":""})
         this.setState(() => {
           searchKeyword: {}
         })
