@@ -115,11 +115,10 @@ class PendingDispatch extends Component {
       handlePendingDispatchSearch = (e) => {
         e.preventDefault();
         let keyword = this.props.form.getFieldsValue();
-        console.log(keyword);
-        this.setState(() => {
+        this.setState({
           searchKeyword: keyword
         })
-        console.log(this.state.searchKeyword);
+        console.log(keyword);
       }
 
       handlePendingDispatchReset = (e) => {
@@ -129,4 +128,4 @@ class PendingDispatch extends Component {
       }
 }
 
-export default PendingDispatch =Form.create({})(PendingDispatch)
+export default PendingDispatch = Form.create({})(PendingDispatch)

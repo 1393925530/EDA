@@ -28,18 +28,29 @@ class PendingDispatchList extends Component {
 
     // 初始化数据
     componentDidMount() {
-        const { dispatch } = this.props;
-        dispatch({
-            type: 'role/fetch',
-        });
+        // const { dispatch } = this.props;
+        // dispatch({
+        //     type: 'role/fetch',
+        // });
         axios.post('/api/test')
         .then((res) => {
-            let list = res.data;
-            console.log(typeof(list));
             this.setState({
-                data: list
+                data: res.data.rows
             });
+        })
+        .catch(() => {alert('error')})
+    }
+
+    //当列表组件属性发生变化时，调用
+    componentWillReceiveProps() {
+        axios.post('/api/test',
+        this.props.searchkeyword
+        )
+        .then((res) => {
             console.log(res);
+            this.setState({
+                data: res.data.rows
+            });
         })
         .catch(() => {alert('error')})
     }
@@ -75,7 +86,7 @@ class PendingDispatchList extends Component {
     }
 
     render() {
-        console.log(this.state.data);
+        console.log("PendingDispatchList重新render");
         const { fetchLoading, addLoading, editLoading, role } = this.props;
         const { addVisible, editVisible, setLoading, setVisible, currentRecord } = this.state;
         const { roles } = role;
@@ -125,7 +136,7 @@ class PendingDispatchList extends Component {
 
         return (<Fragment>
             <Card bordered={false}>
-                <Table columns={columns} loading={fetchLoading} dataSource={roles} pagination={false} keyWord={this.props.searchkeyword}/>
+                <Table columns={columns} loading={fetchLoading} dataSource={this.state.data} pagination={false}/>
             </Card>
 
             <Modal
