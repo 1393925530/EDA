@@ -24,6 +24,7 @@ class PendingDispatchList extends Component {
         pagination: {},
         loading: false,
       };
+      this.submitDispatchLeader = this.submitDispatchLeader.bind(this);
     }
 
     // 初始化数据

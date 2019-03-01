@@ -85,6 +85,16 @@ class DispatchLeader extends Component {
       .catch(() => {alert('error')})
     }
 
+    handlePendingDispatchReset = (e) => {
+        this.props.form.setFields({"area":""})
+        this.props.form.setFields({"department":""})
+        this.props.form.setFields({"serviceMode":""})
+        this.props.form.setFields({"company":""})
+        this.setState({
+          searchKeyword: {}
+        })
+    }
+
     render() {
       const { form } = this.props;
       const { getFieldDecorator } = form;
@@ -118,7 +128,7 @@ class DispatchLeader extends Component {
         const columns = [{
             title: '姓名',
             dataIndex: 'name',
-            key: 'name'
+            key: 'id'
         }, {
             title: '级别',
             dataIndex: 'level',
@@ -152,7 +162,7 @@ class DispatchLeader extends Component {
                  </Col>
                  <Col span={10}>
                   <FormItem label="设计部门" {...formItemLayout}>
-                    {getFieldDecorator('dapartment')(
+                    {getFieldDecorator('department')(
                       <Select placeholder="请选择" style={{ width: '100%' }}>
                       {this.state.placeList.map((value,index)=>{
                       return (<Option value={value} key={index}>{value}</Option>)
