@@ -63,9 +63,11 @@ class PendingDispatchList extends Component {
         })
     }
 
-    // addFormRef = (form) => {
-    //     this.addForm = form;
-    // }
+    selectedProjectMgr = (selectedRowKey) => {
+        console.log(selectedRowKey);
+        this.selectedProjectMgr = selectedRowKey;
+    }
+
 
     handleAddOk = () => {
         this.addForm.validateFields((err, fieldsValue) => {
@@ -87,7 +89,7 @@ class PendingDispatchList extends Component {
     }
 
     submitDispatchLeader = () => {
-        
+
     }
 
     render() {
@@ -151,7 +153,7 @@ class PendingDispatchList extends Component {
                     <Button key="back" type="">布局调度</Button>,
                 ]}
             >
-                <DispatchLeader></DispatchLeader>
+                <DispatchLeader clickBtn={this.selectedProjectMgr}></DispatchLeader>
             </Modal>
         </Fragment>);
     }

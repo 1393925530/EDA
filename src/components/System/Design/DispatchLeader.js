@@ -96,7 +96,7 @@ class DispatchLeader extends Component {
     }
 
     render() {
-      const { form } = this.props;
+      const { form, selectedRowKey } = this.props;
       const { getFieldDecorator } = form;
       const { loading, selectedRowKeys } = this.state;
       const rowRadioSelection={
