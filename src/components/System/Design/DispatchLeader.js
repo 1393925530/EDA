@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Input, Form, Radio, Select, Col, Row, Button, Card, Table} from 'antd';
+import axios from 'axios';
 const FormItem = Form.Item;
 const RadioGroup = Radio.Group;
 const Option = Select.Option;
@@ -15,6 +16,31 @@ class DispatchLeader extends Component {
             data: []
         };
     }
+
+    // 初始化数据
+    componentDidMount() {
+      axios.post('/api/projectManager')
+      .then((res) => {
+          this.setState({
+              data: res.data.rows
+          });
+      })
+      .catch(() => {alert('error')})
+  }
+
+  //当列表组件属性发生变化时，调用
+  componentWillReceiveProps() {
+      axios.post('/api/projectManager',
+      this.props.searchkeyword
+      )
+      .then((res) => {
+          console.log(res);
+          this.setState({
+              data: res.data.rows
+          });
+      })
+      .catch(() => {alert('error')})
+  }
 
     // checkRole = (rule, value, callback) => {
     //     if (value != '角色组') {
