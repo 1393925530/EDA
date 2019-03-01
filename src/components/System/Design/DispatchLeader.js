@@ -13,9 +13,29 @@ class DispatchLeader extends Component {
         this.state = {
             placeList: ['无锡', '西安', '上海', '北京'],
             searchKeyword: {},
-            data: []
+            data: [],
+            loading: false,
+            selectedRowKeys: [], // Check here to configure the default column
         };
+        this.DispatchLeaderSearch = this.DispatchLeaderSearch.bind(this);
     }
+
+    start = () => {
+      this.setState({ loading: true });
+      // ajax request after empty completing
+      setTimeout(() => {
+        this.setState({
+          selectedRowKeys: [],
+          loading: false,
+        });
+      }, 1000);
+    }
+
+    onSelectChange = (selectedRowKeys) => {
+      console.log('selectedRowKeys changed: ', selectedRowKeys);
+      this.setState({ selectedRowKeys });
+    }
+
 
     // 初始化数据
     componentDidMount() {
@@ -29,18 +49,18 @@ class DispatchLeader extends Component {
   }
 
   //当列表组件属性发生变化时，调用
-  componentWillReceiveProps() {
-      axios.post('/api/projectManager',
-      this.props.searchkeyword
-      )
-      .then((res) => {
-          console.log(res);
-          this.setState({
-              data: res.data.rows
-          });
-      })
-      .catch(() => {alert('error')})
-  }
+  // componentWillReceiveProps() {
+  //     axios.post('/api/projectManager',
+  //     this.props.searchkeyword
+  //     )
+  //     .then((res) => {
+  //         console.log(res);
+  //         this.setState({
+  //             data: res.data.rows
+  //         });
+  //     })
+  //     .catch(() => {alert('error')})
+  // }
 
     // checkRole = (rule, value, callback) => {
     //     if (value != '角色组') {
@@ -50,7 +70,33 @@ class DispatchLeader extends Component {
     //     callback('请选择角色!');
     //   }
 
+    DispatchLeaderSearch(e) {
+      e.preventDefault();
+      let keyword = this.props.form.getFieldsValue();
+      axios.post('/api/projectManager',
+      keyword
+      )
+      .then((res) => {
+          console.log(res);
+          this.setState({
+              data: res.data.rows
+          });
+      })
+      .catch(() => {alert('error')})
+    }
+
     render() {
+      const { form } = this.props;
+      const { getFieldDecorator } = form;
+      const { loading, selectedRowKeys } = this.state;
+      const rowRadioSelection={
+        type:'radio',
+        columnTitle:"选择",
+        onSelect: (selectedRowKeys, selectedRows) => {
+        console.log(selectedRowKeys, selectedRows)
+        },
+      }
+      const hasSelected = selectedRowKeys.length > 0;
         const customPanelStyle = {
             background: '#f7f7f7',
             borderRadius: 4,
@@ -89,12 +135,9 @@ class DispatchLeader extends Component {
             title: '负责项目数量',
             dataIndex: 'project',
         }, ];
-
-        const { form } = this.props;
-        const {getFieldDecorator} = form;
         return (
             <div>
-            <Form>
+            <Form onSubmit={this.DispatchLeaderSearch} autoComplete="off">
                 <Row gutter={24}>
                  <Col span={10}>
                   <FormItem label="服务地区" {...formItemLayout}>
@@ -162,7 +205,7 @@ class DispatchLeader extends Component {
             <span>项目负责人推荐表 (推荐建议：4级)</span>
             <hr />
             <Card bordered={false}>
-                <Table columns={columns} dataSource={this.state.data} pagination={false}/>
+                <Table rowSelection={rowRadioSelection} columns={columns} dataSource={this.state.data} pagination={false}/>
             </Card>
             </div>
         )

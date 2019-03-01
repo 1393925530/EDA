@@ -23,25 +23,8 @@ class PendingDispatchList extends Component {
         data: [],
         pagination: {},
         loading: false,
-        selectedRowKeys: [], // Check here to configure the default column
       };
     }
-
-    start = () => {
-        this.setState({ loading: true });
-        // ajax request after empty completing
-        setTimeout(() => {
-          this.setState({
-            selectedRowKeys: [],
-            loading: false,
-          });
-        }, 1000);
-      }
-
-      onSelectChange = (selectedRowKeys) => {
-        console.log('selectedRowKeys changed: ', selectedRowKeys);
-        this.setState({ selectedRowKeys });
-      }
 
     // 初始化数据
     componentDidMount() {
@@ -102,19 +85,13 @@ class PendingDispatchList extends Component {
         this.setState({ addVisible: false });
     }
 
+    submitDispatchLeader = () => {
+        
+    }
+
     render() {
         const { fetchLoading, addLoading, editLoading, role,} = this.props;
-        const { addVisible, editVisible, setLoading, setVisible, currentRecord, loading, selectedRowKeys  } = this.state;
-        const rowRadioSelection={
-            type:'radio',
-            columnTitle:"选择",
-            onSelect: (selectedRowKeys, selectedRows) => {
-            console.log(selectedRowKeys, selectedRows)
-            },
-        }
-        const { roles } = role;
-        const hasSelected = selectedRowKeys.length > 0;
-
+        const { addVisible, editVisible, setLoading, setVisible, currentRecord, } = this.state;
         const columns = [{
             title: 'EDA设计单号',
             dataIndex: 'designOrder',
@@ -160,33 +137,20 @@ class PendingDispatchList extends Component {
 
         return (<Fragment>
             <Card bordered={false}>
-            <div style={{ marginBottom: 16 }}>
-            <Button
-              type="primary"
-              onClick={this.start}
-              disabled={!hasSelected}
-              loading={loading}
-            >
-            Reload
-            </Button>
-            <span style={{ marginLeft: 8 }}>
-              {hasSelected ? `Selected ${selectedRowKeys.length} items` : ''}
-            </span>
-            </div>
-                <Table rowSelection={rowRadioSelection} columns={columns} loading={fetchLoading} dataSource={this.state.data} pagination={false}/>
+                <Table columns={columns} loading={fetchLoading} dataSource={this.state.data} pagination={false}/>
             </Card>
 
-            <Modal width = {'650px'}
+            <Modal width = {'750px'}
                 visible={addVisible}
                 title="负责人调度"
                 onOk={this.handleAddOk}
                 onCancel={this.handleAddCancel}
                 footer={[
-                    <Button key="submit" type="" loading={addLoading}>负责人调度完成</Button>,
+                    <Button key="submit" type="" loading={addLoading} onClick={this.submitDispatchLeader}>负责人调度完成</Button>,
                     <Button key="back" type="">布局调度</Button>,
                 ]}
             >
-                <DispatchLeader ref={this.addFormRef}></DispatchLeader>
+                <DispatchLeader></DispatchLeader>
             </Modal>
         </Fragment>);
     }
